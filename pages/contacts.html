@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATRIOT</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+
+<body>
+  <div class="page-container">
+    <header class="header">
+      <h1>PATRIOT.com</h1>
+    </header>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../index.html" class="nav-link">Главная</a></li>
+        <li class="nav-item"><a href="./diary.html" class="nav-link">Дневник</a></li>
+        <li class="nav-item"><a href="./projects.html" class="nav-link">Проекты</a></li>
+        <li class="nav-item"><a href="./contacts.html" class="nav-link">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <section class="contacts-container">
+        <div class="contact-info">
+          <h2>Свяжитесь с нами</h2>
+          <p>Электронная почта: <a href="mailto:ПатриотРоссии@mail.ru">ПатриотРоссии@mail.ru</a></p>
+          <p>Адрес: г. Москва, Кремль.</p>
+          <button class="contact-button" onclick="contactModal.showModal()">Не звоните</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 🔹 Модальное окно -->
+  <dialog id="contactModal">
+    <div class="modal-header">
+      <h2>Форма обратной связи</h2>
+    </div>
+
+    <form id="feedbackForm" method="dialog">
+      <div class="form-group">
+        <label for="name">Имя</label>
+        <input type="text" id="name" name="name" placeholder="Введите имя" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Почта</label>
+        <input type="email" id="email" name="email" placeholder="Введите email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Сообщение</label>
+        <textarea id="message" name="message" placeholder="Введите сообщение" rows="4" required></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" onclick="contactModal.close()">Закрыть</button>
+        <button type="submit">Отправить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+
+    document.getElementById('contactModal').addEventListener('click', function (event) {
+      if (event.target === this) this.close();
+    });
+
+
+    document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      alert("Спасибо! Ваше сообщение отправлено.");
+      contactModal.close();
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATRIOT</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+
+<body>
+  <div class="page-container">
+    <header class="header">
+      <h1>PATRIOT.com</h1>
+    </header>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../index.html" class="nav-link">Главная</a></li>
+        <li class="nav-item"><a href="./diary.html" class="nav-link">Дневник</a></li>
+        <li class="nav-item"><a href="./projects.html" class="nav-link">Проекты</a></li>
+        <li class="nav-item"><a href="./contacts.html" class="nav-link">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <div class="projects-container">
+      <h2 class="projects-title">My academic progress</h2>
+      <div class="progress-card">
+        <h3>Верстка макета сайта</h3>
+        <h3>JS основы</h3>
+        <h3>Создание дизайна</h3>
+      </div>
+    </div>
+
+
+    <div class="courses">
+      <div class="courses-name">HTML — 30%</div>
+      <progress value="30" max="100"></progress>
+    </div>
+
+
+    <div class="courses">
+      <div class="courses-name">JavaScript — 20%</div>
+      <progress value="20" max="100"></progress>
+    </div>
+
+    <div class="notes-section">
+      <h2>Мои заметки</h2>
+      <div id="notesList"></div>
+      <button id="openModalBtn">Добавить заметку +</button>
+    </div>
+
+    <dialog id="noteModal">
+      <h2>Новая заметка</h2>
+      <form id="noteForm" method="dialog">
+        <label for="noteText">Введите текст заметки:</label><br>
+        <textarea id="noteText" rows="4" cols="30" required></textarea><br><br>
+
+        <button type="submit">Добавить</button>
+        <button type="button" onclick="noteModal.close()">Отмена</button>
+      </form>
+    </dialog>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 MemeCompany. Все права защищены.</p>
+        <div class="social-links">
+          <a href="#">Facebook (Запрещен в РФ)</a><br>
+          <a href="#">Instagram (Запрещен в РФ)</a><br>
+          <a href="#">Twitter (Запрещен в РФ)</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const openModalBtn = document.getElementById('openModalBtn');
+    const noteModal = document.getElementById('noteModal');
+    const noteForm = document.getElementById('noteForm');
+    const notesList = document.getElementById('notesList');
+
+    openModalBtn.addEventListener('click', () => {
+      noteModal.showModal();
+    });
+
+    noteForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = document.getElementById('noteText').value.trim();
+      if (text) {
+        const note = document.createElement('div');
+        note.textContent = text;
+        notesList.appendChild(note);
+        document.getElementById('noteText').value = '';
+        noteModal.close();
+      }
+    });
+
+    noteModal.addEventListener('click', (e) => {
+      if (e.target === noteModal) noteModal.close();
+    });
+  </script>
+</body>
+
+</html>
