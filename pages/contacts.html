@@ -4,81 +4,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PATRIOT</title>
+    <title>PATRIOT — Контакты</title>
     <link rel="stylesheet" href="../styles/style.css">
+
+
+    <style>
+        /* Видимый фокус */
+        :focus {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+        /* Контраст */
+        .contact-button,
+        .modal-actions button {
+            background: #0040aa;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-button:hover,
+        .modal-actions button:hover {
+            background: #002f7a;
+        }
+    </style>
 </head>
 
-
 <body>
-  <div class="page-container">
-    <header class="header">
-      <h1>PATRIOT.com</h1>
-    </header>
+    <div class="page-container">
+        
+        <header class="header">
+            <h1>PATRIOT.com</h1>
+        </header>
 
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="../index.html" class="nav-link">Главная</a></li>
-        <li class="nav-item"><a href="./diary.html" class="nav-link">Дневник</a></li>
-        <li class="nav-item"><a href="./projects.html" class="nav-link">Проекты</a></li>
-        <li class="nav-item"><a href="./contacts.html" class="nav-link">Контакты</a></li>
-      </ul>
-    </nav>
+        <nav class="nav" role="navigation" aria-label="Основная навигация">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Главная</a></li>
+                <li class="nav-item"><a href="./diary.html" class="nav-link">Дневник</a></li>
+                <li class="nav-item"><a href="./projects.html" class="nav-link">Проекты</a></li>
+                <li class="nav-item"><a href="./contacts.html" class="nav-link" aria-current="page">Контакты</a></li>
+            </ul>
+        </nav>
 
-    <main class="content">
-      <section class="contacts-container">
-        <div class="contact-info">
-          <h2>Свяжитесь с нами</h2>
-          <p>Электронная почта: <a href="mailto:ПатриотРоссии@mail.ru">ПатриотРоссии@mail.ru</a></p>
-          <p>Адрес: г. Москва, Кремль.</p>
-          <button class="contact-button" onclick="contactModal.showModal()">Не звоните</button>
-        </div>
-      </section>
-    </main>
-  </div>
+        <main class="content">
 
-  <!-- 🔹 Модальное окно -->
-  <dialog id="contactModal">
-    <div class="modal-header">
-      <h2>Форма обратной связи</h2>
+            <section class="contacts-container">
+                <h2>Свяжитесь с нами</h2>
+
+                <p>Электронная почта: 
+                    <a href="mailto:ПатриотРоссии@mail.ru">ПатриотРоссии@mail.ru</a>
+                </p>
+
+                <p>Адрес: г. Москва, Кремль.</p>
+
+                <button class="contact-button" 
+                        role="button" 
+                        aria-haspopup="dialog" 
+                        aria-controls="contactModal" 
+                        aria-expanded="false"
+                        id="openModalBtn">
+                    Не звоните
+                </button>
+            </section>
+
+        </main>
     </div>
 
-    <form id="feedbackForm" method="dialog">
-      <div class="form-group">
-        <label for="name">Имя</label>
-        <input type="text" id="name" name="name" placeholder="Введите имя" required>
-      </div>
+    <!-- Модальное окно -->
+    <dialog id="contactModal" aria-labelledby="modalTitle" aria-modal="true" role="dialog">
+        <div class="modal-header">
+            <h2 id="modalTitle">Форма обратной связи</h2>
+        </div>
 
-      <div class="form-group">
-        <label for="email">Почта</label>
-        <input type="email" id="email" name="email" placeholder="Введите email" required>
-      </div>
+        <form id="feedbackForm">
+            <fieldset>
+                <legend>Контактная информация</legend>
 
-      <div class="form-group">
-        <label for="message">Сообщение</label>
-        <textarea id="message" name="message" placeholder="Введите сообщение" rows="4" required></textarea>
-      </div>
+                <div class="form-group">
+                    <label for="name">Имя <span aria-hidden="true">*</span></label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           required 
+                           aria-required="true"
+                           aria-invalid="false">
+                </div>
 
-      <div class="modal-actions">
-        <button type="button" onclick="contactModal.close()">Закрыть</button>
-        <button type="submit">Отправить</button>
-      </div>
-    </form>
-  </dialog>
+                <div class="form-group">
+                    <label for="email">Почта <span aria-hidden="true">*</span></label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           required 
+                           aria-required="true"
+                           aria-invalid="false">
+                </div>
 
-  <script>
+                <div class="form-group">
+                    <label for="message">Сообщение <span aria-hidden="true">*</span></label>
+                    <textarea id="message"
+                              name="message"
+                              rows="4"
+                              required
+                              aria-required="true"
+                              aria-invalid="false"></textarea>
+                </div>
+            </fieldset>
 
-    document.getElementById('contactModal').addEventListener('click', function (event) {
-      if (event.target === this) this.close();
-    });
+            <div class="modal-actions">
+                <button type="button" id="closeModalBtn" role="button">Закрыть</button>
+                <button type="submit" role="button">Отправить</button>
+            </div>
+        </form>
 
+        <p id="responseMessage" aria-live="polite" style="margin-top:10px;"></p>
+    </dialog>
 
-    document.getElementById('feedbackForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      alert("Спасибо! Ваше сообщение отправлено.");
-      contactModal.close();
-      this.reset();
-    });
-  </script>
+    <script>
+        const modal = document.getElementById("contactModal");
+        const openBtn = document.getElementById("openModalBtn");
+        const closeBtn = document.getElementById("closeModalBtn");
+        const form = document.getElementById("feedbackForm");
+        const responseBox = document.getElementById("responseMessage");
+
+        /* Открытие модального окна */
+        openBtn.addEventListener("click", () => {
+            modal.showModal();
+            openBtn.setAttribute("aria-expanded", "true");
+            document.getElementById("name").focus();
+        });
+
+        /* Закрытие кнопкой */
+        closeBtn.addEventListener("click", () => closeModal());
+
+        function closeModal() {
+            modal.close();
+            openBtn.setAttribute("aria-expanded", "false");
+            openBtn.focus();
+        }
+
+        /* Закрытие кликом на фон */
+        modal.addEventListener("click", e => {
+            if (e.target === modal) closeModal();
+        });
+
+        /* Закрытие клавишей ESC */
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape" && modal.open) closeModal();
+        });
+
+        /* Отправка формы */
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            responseBox.textContent = "Спасибо! Ваше сообщение отправлено.";
+
+            closeModal();
+            form.reset();
+        });
+    </script>
+
 </body>
-
 </html>

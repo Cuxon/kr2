@@ -1,115 +1,71 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PATRIOT</title>
+    <title>PATRIOT — Проекты</title>
     <link rel="stylesheet" href="../styles/style.css">
+
+
+
+
+    <style>
+        :focus {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+        .project-card {
+            border: 2px solid #0040aa;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+        }
+    </style>
 </head>
 
-
 <body>
-    <div class="page-container">
-        <header class="header">
-            <h1>PATRIOT.com</h1>
-        </header>
+<div class="page-container">
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a href="../index.html" class="nav-link">Главная</a></li>
-                <li class="nav-item"><a href="./diary.html" class="nav-link">Дневник</a></li>
-                <li class="nav-item"><a href="./projects.html" class="nav-link">Проекты</a></li>
-                <li class="nav-item"><a href="./contacts.html" class="nav-link">Контакты</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <h1>PATRIOT.com</h1>
+    </header>
 
+    <nav class="nav" role="navigation" aria-label="Основная навигация">
+        <ul class="nav-list">
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="./diary.html">Дневник</a></li>
+            <li><a href="./projects.html" aria-current="page">Проекты</a></li>
+            <li><a href="./contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
 
+    <main class="content">
 
         <section>
-
-            <h2>My Projects</h2>
-
-            <div class="experience-card">
-                <img src="../images/Снимок экрана 2025-10-20 в 10.08.55 2.png" alt="Многостраничный сайтик" width="200"
-                    height="200">
-                <h3>Многостраничный сайтик</h3>
-                <p>Учебный многостраничный сайт, сверстанный с использованием HTML, CSS и JS.</p>
-            </div>
-
-            <div class="experience-card">
-                <img src="../images/Без заголовка.png" alt="Snake (simple)" width="200" height="200">
-                <h3>Snake (simple)</h3>
-                <p>Простая игра Snake на Qt, реализованная без библиотек.</p>
-            </div>
-
-            <div class="experience-card">
-                <img src="../images/Снимок экрана 2025-10-20 в 10.28.14.png" alt="Calendar (console)" width="200" height="200">
-                <h3>Calendar (console)</h3>
-                <p>Консольное приложение календаря.</p>
-            </div>
+            <h2>Мои проекты</h2>
+            <p>Тут собраны все работы, сделанные в процессе обучения.</p>
         </section>
 
+        <section aria-labelledby="pr1-header" class="project-card">
+            <h3 id="pr1-header">Змейка в QT</h3>
+            <p>Настольная игра, написанная на C++ с использованием QtWidgets.</p>
+        </section>
 
-        <dialog id="projectModal">
-            <img id="modalImage" src="" alt="Project image" width="400">
-            <p id="modalDescription"></p>
-            <button id="closeModal">Закрыть</button>
-        </dialog>
+        <section aria-labelledby="pr2-header" class="project-card">
+            <h3 id="pr2-header">Одностраничный сайт</h3>
+            <p>Лэндинг со структурой, адаптивом и начальной доступностью.</p>
+        </section>
 
-        <script>
+        <section aria-labelledby="pr3-header" class="project-card">
+            <h3 id="pr3-header">Нынешний сайт</h3>
+            <p>Многостраничный проект с улучшенной разметкой и навигацией.</p>
+        </section>
 
-            const cards = document.querySelectorAll('.experience-card');
-            const modal = document.getElementById('projectModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalDescription = document.getElementById('modalDescription');
-            const closeModal = document.getElementById('closeModal');
-
-
-            cards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const img = card.querySelector('img');
-                    const description = card.querySelector('p').textContent;
-
-                    modalImage.src = img.src;
-                    modalDescription.textContent = description;
-                    modal.showModal();
-                });
-            });
-
-
-            closeModal.addEventListener('click', () => modal.close());
-            modal.addEventListener('click', e => {
-                if (e.target === modal) modal.close();
-            });
-        </script>
-
-
-
-    </div>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">
-                Все права защищены.
-            </p>
-        </div>
-        <div class="social-links">
-            <a href="#">
-                @tg -> link
-            </a>
-        </div>
-
-
-    </footer>
-
-
-
-
+    </main>
+</div>
 </body>
-
-
-
-
-
 </html>

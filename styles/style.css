@@ -146,3 +146,128 @@ button:hover, .btn:hover {
     padding: 20px;
   }
 }
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.nav-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+.contacts-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contact-info p {
+    font-size: 1rem;
+}
+
+.contact-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+}
+
+dialog {
+    width: 90%;
+    max-width: 400px;
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+}
+.projects-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.progress-card h3 {
+    margin: 8px 0;
+}
+
+.courses {
+    margin: 20px 0;
+}
+
+progress {
+    width: 100%;
+}
+
+.notes-section {
+    margin-top: 40px;
+}
+
+#notesList > div {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+.experience-card {
+    background: #f3f3f3;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.experience-card img {
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 700px) {
+    section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1000px) {
+    section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+#projectModal {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+}
+@media (max-width: 576px) {
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+}
